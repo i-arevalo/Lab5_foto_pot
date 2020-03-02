@@ -1,7 +1,7 @@
 /*
  * File:   main_lab6_pote.c
  * Author: Israel Arevalo
- *
+ * Referencias: Se tomó como referencia el código de Pablo Mazariegos en Github
  * Created on 28 de febrero de 2020, 03:50 AM
  */
 
@@ -68,7 +68,7 @@ void __interrupt() inter(void)
         else if(!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
             temp = SSPBUF;
             BF = 0;
-            SSPBUF = ADRESH;
+            SSPBUF = ADRESH;//Se envia el valor del ADC por I2C
             SSPCONbits.CKP = 1;
             __delay_us(250);
             while(SSPSTATbits.BF);
